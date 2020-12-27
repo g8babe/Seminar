@@ -19,20 +19,26 @@
 
     <Button
         android:id="@+id/qrcode"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="90dp"
-        android:text="QR Code驗證"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="80dp"
+        android:background="#00A1E1"
+        android:text="QR Code  驗證"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/verification_code"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginEnd="90dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="80dp"
+        android:background="#00A1E1"
         android:text="驗證碼      驗證"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/qrcode" />
 

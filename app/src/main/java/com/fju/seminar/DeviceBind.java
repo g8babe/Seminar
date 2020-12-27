@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -12,17 +13,40 @@ import android.widget.TextView;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 public class DeviceBind extends AppCompatActivity {
 
     private Button bBinding;
     private TextView tvBinding;
     private Activity context=this;
     private Button button;
+    private TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device_bind);
+        //連線
+        textView = findViewById(R.id.textView6);
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+        try {
+            Class.forName(WebLogin.Classes);
+            Connection connection = DriverManager.getConnection(WebLogin.url, WebLogin.username, WebLogin.password);
+            textView.setText("Chicken Key － SUCCESS");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            textView.setText("Chicken Key － ERROR");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            textView.setText("Chicken Key － FAILURE");
+        }
+        //
 
         bBinding = findViewById(R.id.binding);
 

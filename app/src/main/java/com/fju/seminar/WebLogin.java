@@ -31,15 +31,15 @@ public class WebLogin extends AppCompatActivity {
 
     private TextView textView;
 
-    private static String ip = "10.211.55.4";
-    private static String port = "4321";
-    private static String Classes = "net.sourceforge.jtds.jdbc.Driver";
-    private static String database = "Seminar";
-    private static String username = "sa";
-    private static String password = "0000";
-    private static String url = "jdbc:jtds:sqlserver://" + ip + ":" + port + "/" + database;
+    static String ip = "10.211.55.4";
+    static String port = "4321";
+    static String Classes = "net.sourceforge.jtds.jdbc.Driver";
+    static String database = "Seminar";
+    static String username = "sa";
+    static String password = "0000";
+    static String url = "jdbc:jtds:sqlserver://" + ip + ":" + port + "/" + database;
 
-    private Connection connection = null;
+    Connection connection = null;
 
     private Button bQRCode;
     private Button bVFCode;
@@ -118,7 +118,7 @@ public class WebLogin extends AppCompatActivity {
                     result += random.nextInt(9)+1;
                 }
 
-                String query = "INSERT into T_LOGIN_CODE (UserID, IMEI, VerifyCode, [Time], Isvalid) values ('min', "
+                String query = "INSERT into T_LOGIN_CODE (UserID, IMEI, VerifyCode, [Time], Isvalid) values ('g8babe', "
                         + imei
                         +", "
                         + result

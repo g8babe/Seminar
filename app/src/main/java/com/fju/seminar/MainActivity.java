@@ -36,30 +36,33 @@ public class MainActivity extends AppCompatActivity {
     private Button bLoginAct;
     private Button bWebLogin;
     private Button bSettings;
+    private TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.INTERNET}, PackageManager.PERMISSION_GRANTED);
-//
-//        textView = findViewById(R.id.textView);
-//
-//        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-//        StrictMode.setThreadPolicy(policy);
-//
-//        try {
-//            Class.forName(Classes);
-//            connection = DriverManager.getConnection(url, username, password);
-//            textView.setText("Chicken Key － SUCCESS");
-//        } catch (ClassNotFoundException e) {
-//            e.printStackTrace();
-//            textView.setText("Chicken Key － ERROR");
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//            textView.setText("Chicken Key － FAILURE");
-//        }
+        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.INTERNET}, PackageManager.PERMISSION_GRANTED);
+
+      //連線
+        textView = findViewById(R.id.textView);
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+        try {
+            Class.forName(WebLogin.Classes);
+            Connection connection = DriverManager.getConnection(WebLogin.url, WebLogin.username, WebLogin.password);
+            textView.setText("Chicken Key － SUCCESS");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            textView.setText("Chicken Key － ERROR");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            textView.setText("Chicken Key － FAILURE");
+        }
+        //
 
         bDVmanage = findViewById(R.id.device_manage);
         bLoginAct = findViewById(R.id.login_activity);
