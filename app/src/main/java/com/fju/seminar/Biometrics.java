@@ -44,7 +44,7 @@ public class Biometrics extends AppCompatActivity {
             public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
                 super.onAuthenticationSucceeded(result);
                 authStatusTv.setText("認證成功！");
-                startActivity(new Intent(Biometrics.this, MainActivity.class));
+                startActivity(new Intent(Biometrics.this, WebLogin.class));
                 Toast.makeText(Biometrics.this, "認證成功！", Toast.LENGTH_SHORT).show();
             }
 

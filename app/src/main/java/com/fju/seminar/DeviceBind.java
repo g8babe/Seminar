@@ -15,7 +15,7 @@ import com.google.zxing.integration.android.IntentResult;
 public class DeviceBind extends AppCompatActivity {
 
     private Button bBinding;
-    private TextView TV;
+    private TextView tvBinding;
     private Activity context=this;
 
     @Override
@@ -25,7 +25,7 @@ public class DeviceBind extends AppCompatActivity {
 
         bBinding = findViewById(R.id.binding);
 
-        TV=(TextView)findViewById(R.id.TV);
+        tvBinding=(TextView)findViewById(R.id.TV_binding);
         bBinding.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,12 +63,12 @@ public class DeviceBind extends AppCompatActivity {
             if (SR.getContents() != null){
                 String SC=SR.getContents();
                 if (!SC.equals("")){
-                    TV.setText(SC.toString());
+                    tvBinding.setText(SC.toString());
                 }
             }
         }else{
             super.onActivityResult(requestCode, resultCode, intent);
-            TV.setText("產生錯誤");
+            tvBinding.setText("產生錯誤");
         }
     }
 }

@@ -16,16 +16,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WebLogin" />
-        <activity android:name=".DeviceOK" />
-        <activity android:name=".Biometrics"><intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".QRCode" />
+        <activity android:name=".WebLogin" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+        <activity android:name=".DeviceOK" />
+        <activity android:name=".Biometrics" />
         <activity android:name=".DeviceBind" />
         <activity android:name=".MainActivity" />
+
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:screenOrientation="fullSensor"
