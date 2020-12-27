@@ -2,15 +2,18 @@ package com.fju.seminar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.telephony.TelephonyManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -43,12 +46,17 @@ public class WebLogin extends AppCompatActivity {
     private TextView tvLogin;
     private Activity content = this;
 
+    TelephonyManager tm;
+    String imei;
+    TextView imeitxt;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web_login);
 
+        //連線
         ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.INTERNET}, PackageManager.PERMISSION_GRANTED);
 
         textView = findViewById(R.id.textView2);
@@ -88,18 +96,31 @@ public class WebLogin extends AppCompatActivity {
             }
         });
 
+        //IMEI取得
+        int permisI = ContextCompat.checkSelfPermission(WebLogin.this, Manifest.permission.READ_PHONE_STATE);
+
+        if(permisI == PackageManager.PERMISSION_GRANTED){
+            tm = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
+            imei = tm.getImei().toString();
+        }
+        else {
+            ActivityCompat.requestPermissions(WebLogin.this, new String[]{Manifest.permission.READ_PHONE_STATE}, 123);
+        }
+
         bVFCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //6位驗證碼產生
                 Random random = new Random();
                 String result = "";
                 for (int i=0;i<6;i++)
                 {
-                    result += random.nextInt(10);
+                    result += random.nextInt(9)+1;
                 }
 
-                String query = "INSERT into T_LOGIN_CODE (UserID, IMEI, VerifyCode, [Time], Isvalid) values ('min', '358240051111111',"
+                String query = "INSERT into T_LOGIN_CODE (UserID, IMEI, VerifyCode, [Time], Isvalid) values ('min', "
+                        + imei
+                        +", "
                         + result
                         + ", GETDATE(), null);";
                 try {
@@ -109,6 +130,7 @@ public class WebLogin extends AppCompatActivity {
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
+
 
                 new AlertDialog.Builder(WebLogin.this)
                         .setTitle("請於登入網頁輸入驗證碼")

@@ -17,6 +17,7 @@ public class DeviceBind extends AppCompatActivity {
     private Button bBinding;
     private TextView tvBinding;
     private Activity context=this;
+    private Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,8 @@ public class DeviceBind extends AppCompatActivity {
         setContentView(R.layout.activity_device_bind);
 
         bBinding = findViewById(R.id.binding);
+
+        button = findViewById(R.id.button);
 
         tvBinding=(TextView)findViewById(R.id.TV_binding);
         bBinding.setOnClickListener(new View.OnClickListener() {
@@ -40,20 +43,14 @@ public class DeviceBind extends AppCompatActivity {
             }
         });
 
-//        getPermissionsCamera();
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(DeviceBind.this, Biometrics.class));
+            }
+        });
     }
 
-//    public void getPermissionsCamera(){
-//        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
-//                != PackageManager.PERMISSION_GRANTED){
-//            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CAMERA},1);
-//        }
-//    }
-
-//    public void Binding (View view){
-//
-//
-//    }
 
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
 
