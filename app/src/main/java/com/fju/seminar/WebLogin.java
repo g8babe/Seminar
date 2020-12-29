@@ -39,7 +39,7 @@ public class WebLogin extends AppCompatActivity {
     static String password = "0000";
     static String url = "jdbc:jtds:sqlserver://" + ip + ":" + port + "/" + database;
 
-    Connection connection = null;
+    static Connection connection = null;
 
     private Button bQRCode;
     private Button bVFCode;
@@ -47,7 +47,7 @@ public class WebLogin extends AppCompatActivity {
     private Activity content = this;
 
     TelephonyManager tm;
-    String imei;
+    static String imei;
     TextView imeitxt;
 
 
@@ -173,7 +173,7 @@ public class WebLogin extends AppCompatActivity {
             if (SR.getContents() != null){
                 String SC=SR.getContents();
                 if (!SC.equals("")){
-                    tvLogin.setText(SC.toString());
+                    startActivity(new Intent(WebLogin.this, QRLogin.class));
                 }
             }
         }else{
