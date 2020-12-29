@@ -40,7 +40,7 @@ public class QRLogin extends AppCompatActivity {
         startActivity(new Intent(Intent.ACTION_VIEW,uri));
 
         //連線
-        textView = findViewById(R.id.textView9);
+        textView = findViewById(R.id.textView10);
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -63,7 +63,7 @@ public class QRLogin extends AppCompatActivity {
         btnQRLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String query = "UPDATE T_LOGIN_QR SET Isvalid = 1 where [Time] = (select max([Time]) from T_LOGIN_QR where UserID = 'g8babe')";
+                String query = "UPDATE T_LOGIN_QR SET Isvalid = 1 where [Time] = (select max([Time]) from T_LOGIN_QR where UserID = 'coolChicken')";
                 try {
                     PreparedStatement pst = connection.prepareStatement(query);
                     pst.executeUpdate();

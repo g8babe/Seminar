@@ -118,7 +118,7 @@ public class WebLogin extends AppCompatActivity {
                     result += random.nextInt(9)+1;
                 }
 
-                String query = "INSERT into T_LOGIN_CODE (UserID, IMEI, VerifyCode, [Time], Isvalid) values ('g8babe', "
+                String query = "INSERT into T_LOGIN_CODE (UserID, IMEI, VerifyCode, [Time], Isvalid) values ('coolChicken', "
                         + imei
                         +", "
                         + result

@@ -28,7 +28,6 @@ public class DeviceBind extends AppCompatActivity {
 
     private Button bBinding;
 //    private Activity context=this;
-    private Button button;
     private TextView textView;
     private Connection connection;
 
@@ -60,8 +59,6 @@ public class DeviceBind extends AppCompatActivity {
 
         bBinding = findViewById(R.id.binding);
 
-        button = findViewById(R.id.button);
-
         //IMEI取得
         int permisI = ContextCompat.checkSelfPermission(DeviceBind.this, Manifest.permission.READ_PHONE_STATE);
 
@@ -76,7 +73,7 @@ public class DeviceBind extends AppCompatActivity {
         bBinding.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String query = "INSERT into T_USER_DV (UserID, DvNo, IMEI, [Time], Isvalid) values ('g8babe', 1, "
+                String query = "INSERT into T_USER_DV (UserID, DvNo, IMEI, [Time], Isvalid) values ('coolChicken', 1, "
                         + imei
                         + ", GETDATE(), null)";
                 try {
@@ -85,12 +82,6 @@ public class DeviceBind extends AppCompatActivity {
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
-            }
-        });
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
                 startActivity(new Intent(DeviceBind.this, Biometrics.class));
             }
         });

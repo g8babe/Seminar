@@ -29,6 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView textView;
     private Statement statement;
     private ResultSet resultSet;
+
     private Connection connection;
 
     @Override
@@ -85,12 +86,6 @@ public class LoginActivity extends AppCompatActivity {
                         .setTitle("沒有行動身份驗證的帳號？")
                         .setMessage("請搜尋http://chicken.key註冊帳號")
                         .setPositiveButton("我知道了！", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                            }
-                        })
-                        .setNegativeButton("我已經有帳號了", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
