@@ -36,7 +36,7 @@
         android:layout_height="100dp"
         android:layout_marginEnd="80dp"
         android:background="#00A1E1"
-        android:text="驗證碼      驗證"
+        android:text="驗證碼       驗證"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
